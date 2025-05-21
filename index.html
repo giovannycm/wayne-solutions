@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wayne Solutions MX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-fondo: #fff;
+      --color-texto: #111;
+      --color-acento: #222;
+      --color-secundario: #e0e0e0;
+      --color-primario: #000;
+      --color-hover: #444;
+      --color-borde: #f5f5f5;
+      --color-azul: #007aff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--color-primario);
+      color: var(--color-fondo);
+      padding: 2.2rem 0 1.2rem 0;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      position: relative;
+    }
+    .logo-space {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.2rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .logo-space img {
+      max-width: 80px;
+      max-height: 80px;
+      display: block;
+      margin: auto;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-bottom: 0.5rem;
+    }
+    nav {
+      margin-top: 1.2rem;
+    }
+    nav a {
+      color: var(--color-fondo);
+      text-decoration: none;
+      margin: 0 1.1rem;
+      font-weight: 500;
+      font-size: 1.05rem;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s, color 0.2s;
+    }
+    nav a:hover, nav a.active {
+      color: var(--color-azul);
+      border-bottom: 2px solid var(--color-azul);
+    }
+    section {
+      max-width: 950px;
+      margin: 3rem auto;
+      background: var(--color-fondo);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      padding: 2.2rem 2rem;
+      border: 1px solid var(--color-borde);
+      animation: fadeInUp 1.2s;
+    }
+    h2 {
+      color: var(--color-primario);
+      font-size: 1.7rem;
+      margin-bottom: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-left: 4px solid var(--color-azul);
+      padding-left: 0.7rem;
+    }
+    .about-main h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-azul);
+      font-weight: 700;
+    }
+    .about-main p {
+      margin-bottom: 0.7rem;
+      font-size: 1.05rem;
+    }
+    /* Certificaciones y partners */
+    #certificaciones-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    #certificaciones-logos .logo-cert {
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #certificaciones-logos img {
+      height: 60px;
+      margin-bottom: 0.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-radius: 8px;
+      background: #fff;
+      padding: 6px;
+    }
+    #certificaciones-logos .logo-cert:hover img {
+      transform: scale(1.08);
+      box-shadow: 0 6px 18px rgba(0,122,255,0.10);
+    }
+    #certificaciones-logos .logo-cert div {
+      font-size: 0.98rem;
+      color: #222;
+    }
+    .info-list, .specializations, .tech-list, .team-grid { margin-bottom: 1.5rem; }
+    .specializations, .tech-list, .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .specialization, .tech-card, .team-card {
+      background: #fff;
+      border: 1px solid var(--color-borde);
+      border-radius: 10px;
+      padding: 1.1rem 1rem 1.1rem 1.1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .specialization:hover, .tech-card:hover, .team-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    }
+    .specialization h3, .tech-card h3, .team-card h4 {
+      font-size: 1.08rem;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+      color: var(--color-azul);
+    }
+    .specialization ul, .tech-card ul, .team-card ul {
+      margin-left: 1.1rem;
+      font-size: 0.98rem;
+    }
+    .portfolio-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      font-size: 0.99rem;
+    }
+    .portfolio-table th, .portfolio-table td {
+      padding: 1rem 0.7rem;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .portfolio-table th {
+      background: var(--color-azul);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .portfolio-table tr:last-child td { border-bottom: none; }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #bdbdbd;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border 0.2s;
+      background: #fafafa;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 1.5px solid var(--color-azul);
+      outline: none;
+    }
+    .contact-form button {
+      background: var(--color-azul);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.9rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .contact-form button:hover {
+      background: var(--color-hover);
+      transform: scale(1.04);
+    }
+    .contact-data {
+      margin: 2.2rem auto 0 auto;
+      max-width: 420px;
+      background: var(--color-secundario);
+      border-radius: 10px;
+      padding: 1.1rem 1rem;
+      font-size: 0.98rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .contact-data ul {
+      list-style: none;
+    }
+    .contact-data li {
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 0.3rem;
+    }
+    .contact-data li:last-child { border-bottom: none; }
+    .contact-data strong { color: var(--color-primario); }
+    footer {
+      background: var(--color-primario);
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem 0 1rem 0;
+      margin-top: 2.5rem;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 800px) {
+      section { padding: 1.2rem 0.7rem; }
+      .specializations, .tech-list, .team-grid, #certificaciones-logos { grid-template-columns: 1fr; flex-direction: column; gap: 1.2rem; }
+    }
+    @media (max-width: 500px) {
+      header h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.1rem; }
+      .portfolio-table th, .portfolio-table td { font-size: 0.93rem; }
+      .logo-space { width: 80px; height: 80px; }
+      #certificaciones-logos img { height: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-space">
+      <!-- Sustituye el SVG por tu logo o una imagen -->
+<!--       <svg width="60" height="60" viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="28" fill="#007aff" />
+        <text x="30" y="38" text-anchor="middle" font-size="28" fill="#fff" font-family="Montserrat,Arial" font-weight="bold">W</text>
+      </svg> -->
+      
+      <img src="Logo Wayne.png" alt="Logo Wayne Solutions">
+      
+    </div>
+    <h1>Wayne Solutions MX</h1>
+    <p>Innovación y tecnología para el crecimiento empresarial</p>
+    <nav>
+      <a href="#quienes">Quiénes somos</a>
+      <a href="#certificaciones">Certificaciones</a>
+      <a href="#especializacion">Especialización</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section id="quienes">
+    <h2>Quiénes somos</h2>
+    <div class="about-main">
+      <h3>Misión</h3>
+      <p>Impulsar la transformación digital de nuestros clientes mediante soluciones innovadoras y eficientes.</p>
+      <h3>Visión</h3>
+      <p>Ser líderes en el desarrollo de software personalizado en Latinoamérica.</p>
+      <h3>Valores</h3>
+      <p>Excelencia, innovación, compromiso y confianza.</p>
+      <p style="margin-top:1.2rem;">
+        Wayne Soluciones MX es una empresa consolidada con 13 años de trayectoria y un equipo de 65 profesionales altamente especializados. Hemos completado más de 150 proyectos exitosos manteniendo un 97% de satisfacción entre nuestros clientes y una experiencia comprobada en el sector mayorista.
+      </p>
+    </div>
+  </section>
+
+  <section id="certificaciones">
+    <h2>Certificaciones y Partners</h2>
+    <div id="certificaciones-logos">
+      <!-- Certificaciones -->
+      <div class="logo-cert">
+        <img src="ISO-9001.png" alt="ISO 9001">
+        <div>ISO 9001</div>
+      </div>
+      <div class="logo-cert">
+        <img src="Scrum.png" alt="SCRUM">
+        <div>SCRUM</div>
+      </div>
+      <div class="logo-cert">
+        <img src="PMP.png" alt="PMP">
+        <div>PMP</div>
+      </div>
+      <!-- Partners -->
+      <div class="logo-cert">
+        <img src="Microsoft.png" alt="Microsoft Partner">
+        <div>Microsoft Partner</div>
+      </div>
+      <div class="logo-cert">
+        <img src="AWS.png" alt="AWS Partner">
+        <div>AWS Partner</div>
+      </div>
+      <div class="logo-cert">
+        <img src="Oracle.png" alt="Oracle Partner">
+        <div>Oracle Partner</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="especializacion">
+    <h2>Áreas de Especialización</h2>
+    <div class="specializations">
+      <div class="specialization">
+        <h3>Sistemas de Gestión Empresarial</h3>
+        <ul>
+          <li>ERP/CRM para distribuidores</li>
+          <li>Gestión de inventarios</li>
+          <li>Sistemas de trazabilidad</li>
+        </ul>
+      </div>
+      <div class="specialization">
+        <h3>Desarrollo Web Responsive</h3>
+        <ul>
+          <li>Portales B2B/B2C</li>
+          <li>Aplicaciones web progresivas</li>
+          <li>Interfaces de usuario intuitivas</li>
+        </ul>
+      </div>
+      <div class="specialization">
+        <h3>Integración de Sistemas</h3>
+        <ul>
+          <li>API y microservicios</li>
+          <li>Gestión de datos corporativos</li>
+          <li>Consolidación de plataformas</li>
+        </ul>
+      </div>
+      <div class="specialization">
+        <h3>Infraestructura Cloud</h3>
+        <ul>
+          <li>Despliegues en AWS/Azure</li>
+          <li>Escalabilidad y alta disponibilidad</li>
+          <li>Seguridad en la nube</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipo">
+    <h2>Equipo de Dirección y Desarrollo</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <h4>Dirección y Gestión</h4>
+        <ul>
+          <li><strong>Director de Proyecto</strong> 
+            <ul>
+              <li>PMP Certificado, 12 años de experiencia</li>
+              <li>Especialista en metodologías ágiles</li>
+            </ul>
+          </li>
+          <li><strong>Líder Técnico:</strong>
+            <ul>
+              <li>Arquitecta de Software Senior, 9 años</li>
+              <li>Experto en aplicaciones web escalables</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="team-card">
+        <h4>Equipo de Desarrollo</h4>
+        <ul>
+          <li><strong>Desarrolladores Full-Stack:</strong> 4
+            <ul>
+              <li>Especializaciones: React.js, Node.js, Java</li>
+              <li>Experiencia promedio: 6 años</li>
+            </ul>
+          </li>
+          <li><strong>Especialistas UX/UI:</strong> 2
+            <ul>
+              <li>Enfoque en diseño centrado en usuario</li>
+              <li>Especialistas en interfaces empresariales</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="team-card">
+        <h4>Equipo de Soporte Especializado</h4>
+        <ul>
+          <li><strong>Analista de Calidad</strong>
+            <ul>
+              <li>ISTQB Certificado</li>
+              <li>7 años de experiencia</li>
+              <li>Especialización en pruebas automatizadas</li>
+              <li>Gestión de plan de calidad integral</li>
+            </ul>
+          </li>
+          <li><strong>Especialista DevOps</strong>
+            <ul>
+              <li>AWS Certified</li>
+              <li>Experto en CI/CD</li>
+              <li>Implementación de infraestructura como código</li>
+              <li>Monitoreo y optimización de entornos cloud</li>
+            </ul>
+          </li>
+          <li><strong>Analista de Seguridad</strong>
+            <ul>
+              <li>CISSP Certificado</li>
+              <li>Especialista en OWASP</li>
+              <li>Análisis de vulnerabilidades</li>
+              <li>Implementación de protocolos de seguridad</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="portafolio">
+    <h2>Portafolio de Proyectos Relevantes</h2>
+    <table class="portfolio-table">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Proyecto</th>
+          <th>Resultados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Distribuidora Alimentos El Norte</td>
+          <td>Sistema integrado de gestión de inventarios y pedidos</td>
+          <td>Reducción del 35% en tiempos de procesamiento de pedidos</td>
+        </tr>
+        <tr>
+          <td>Importadora Montero</td>
+          <td>Plataforma B2B para gestión de clientes mayoristas</td>
+          <td>Incremento del 28% en ventas en 6 meses</td>
+        </tr>
+        <tr>
+          <td>Comercializadora ProAgro</td>
+          <td>Sistema de distribución con rutas optimizadas</td>
+          <td>Ahorro del 22% en costos logísticos</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="tecnologias">
+    <h2>Tecnologías Implementadas</h2>
+    <div class="tech-list">
+      <div class="tech-card">
+        <h3>Sistemas Web Empresariales</h3>
+        <ul>
+          <li><strong>Frontend:</strong> ReactJS + Material UI, Angular con NgBootstrap, Vue.js con Vuetify</li>
+          <li><strong>Backend:</strong> Node.js con Express/NestJS, Java Spring Boot, Python con Django/FastAPI</li>
+          <li><strong>Bases de datos:</strong> PostgreSQL, MySQL, MongoDB, Redis, sistemas híbridos SQL/NoSQL</li>
+        </ul>
+      </div>
+      <div class="tech-card">
+        <h3>Infraestructura y Seguridad</h3>
+        <ul>
+          <li>AWS Cloud, Microsoft Azure</li>
+          <li>Contenedores Docker, Kubernetes</li>
+          <li>OAuth 2.0, JWT, cifrado de datos</li>
+          <li>Arquitecturas redundantes y alta disponibilidad</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form class="contact-form" autocomplete="off">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+      <textarea name="mensaje" rows="4" placeholder="Escribe tu mensaje" required></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+    <div class="contact-data">
+      <ul>
+        <li><strong>Razón Social:</strong> Wayne Soluciones MX, S.A. de C.V.</li>
+        <li><strong>Dirección:</strong> Av. Insurgentes Sur 1457, CDMX</li>
+        <li><strong>Teléfono:</strong> +52 (55) 5628-7930</li>
+        <li><strong>Correo:</strong> contacto@wayne.com.mx</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2024 Wayne Solutions MX &mdash; Innovación y tecnología para el crecimiento empresarial
+  </footer>
+
+  <script>
+    // Navegación con scroll suave y resaltado de sección activa
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+    // Resalta el menú activo al hacer scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      let scrollPos = window.scrollY + 120;
+      sections.forEach(sec => {
+        if (scrollPos > sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+          document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+          const id = sec.getAttribute('id');
+          const navLink = document.querySelector('nav a[href="#' + id + '"]');
+          if (navLink) navLink.classList.add('active');
+        }
+      });
+    });
+    // Mensaje de éxito simulado para el formulario
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Gracias por tu mensaje! Nos pondremos en contacto pronto.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
